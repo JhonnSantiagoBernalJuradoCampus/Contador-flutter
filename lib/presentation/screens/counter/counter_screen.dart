@@ -8,7 +8,8 @@ class CounterScreen extends StatelessWidget {
     return  Scaffold(
       //Titulo
       appBar: AppBar(
-        title: const Text('Counter'),
+        centerTitle: true,
+        title: const Text('Counter screen'),
       ),
       body: const Center(
         child: Column(
@@ -16,7 +17,7 @@ class CounterScreen extends StatelessWidget {
           children: <Widget>[
             Text(
               '10',
-              style: TextStyle(fontSize: 130, fontWeight: FontWeight.w100),
+              style: TextStyle(fontSize: 160, fontWeight: FontWeight.w100),
             ),
             Text('Clicks',
             style: TextStyle(fontSize: 25),)
@@ -24,7 +25,6 @@ class CounterScreen extends StatelessWidget {
         )
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red.shade300,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CounterScreen()));
         },
