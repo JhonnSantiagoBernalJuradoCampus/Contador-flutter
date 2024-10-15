@@ -17,9 +17,9 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Counter functions'),
+        leading: const FlutterLogo(),
         actions: <Widget>[
           IconButton(
-            color: Colors.blue,
             icon: const Icon(Icons.refresh_rounded), 
             onPressed: (){
               setState(() {
@@ -42,25 +42,40 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           ],
         )
       ),
-      floatingActionButton: const Column(
+      floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           
           CustomBotton(
             icon: Icons.refresh_rounded,
+            onPressed: () {
+              setState(() {
+                clickCounter= 0;
+              });
+            },
           ),
 
-          SizedBox(height: 10,),
+          const SpaceBotton(),
 
           CustomBotton(
             icon: Icons.plus_one,
+            onPressed: () {
+              setState(() {
+                clickCounter++;
+              });
+            },
           ),
 
-          SizedBox(height: 10,),
+          const SpaceBotton(),
 
 
           CustomBotton(
             icon: Icons.exposure_minus_1_outlined,
+            onPressed: () {
+              setState(() {
+                clickCounter--;
+              });
+            },
           ),
         ],
       ),
@@ -68,22 +83,31 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
   }
 }
 
+class SpaceBotton extends StatelessWidget {
+  const SpaceBotton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(height: 10,);
+  }
+}
+
 class CustomBotton extends StatelessWidget {
   final IconData icon;
-  final Function? onPressed;
+  final VoidCallback? onPressed;
   const CustomBotton({
     super.key, 
-    required this.icon, 
+    required this.icon,
     this.onPressed
   });
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      shape: const CircleBorder(),
-      onPressed: () {
-        
-      },
+      // shape: const CircleBorder(),
+      onPressed: onPressed,
       child: Icon(icon),
     );
   }
